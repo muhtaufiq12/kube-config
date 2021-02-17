@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+      kubernetes.io/ingress.class: nginx
+  name: ingress-resource-1
+  namespace: testing-ingress
+spec:
+  rules:
+  - host: nginx.blimart.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx-deploy-main
+            port: 
+              number: 80

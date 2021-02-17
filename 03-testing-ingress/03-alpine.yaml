@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: nginx
+  name: alpine-deploy-main
+  namespace: testing-ingress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: alpine-main
+  template:
+    metadata:
+      labels:
+        run: alpine-main
+    spec:
+      containers:
+      - image: alpine
+        name: alpine
